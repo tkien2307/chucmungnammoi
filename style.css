@@ -1,0 +1,131 @@
+/* Đặt font và tổng thể layout */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    text-align: center;
+    background-color: #0c0101;
+}
+
+header span{
+    font-size: 25px;
+    padding-top: 20px;
+}
+header {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    background-color: #4CAF50;
+    padding: 20px;
+    background-image: url('images/SL-101321-46120-04.jpg');
+    background-size: cover;
+}
+header h1 {
+    color: red;
+    text-shadow: 3px 3px 8px rgba(124, 36, 36, 0.6), 0 0 4px black, 0 0 10px black; /* Thêm viền đen cho text */
+}
+
+
+/* Center the card container */
+.card-container {
+    position: absolute; /* Thay đổi từ relative sang absolute */
+    top: 50%;  /* Đặt thẻ container ở giữa màn hình theo chiều dọc */
+    left: 50%; /* Đặt thẻ container ở giữa màn hình theo chiều ngang */
+    transform: translate(-50%, -50%); /* Dịch chuyển để căn chính xác vào giữa */
+    width: 80vw;  /* Đặt chiều rộng bằng 80% của màn hình */
+    height: 80vw; /* Đặt chiều cao bằng 80% của màn hình */
+    max-width: 400px; /* Giới hạn chiều rộng tối đa */
+    max-height: 400px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    position: absolute;
+    width: 150px;  /* Chiều rộng của thẻ */
+    height: 250px; /* Chiều cao của thẻ */
+    transform-origin: bottom center;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease, opacity 0.6s ease, z-index 0.6s ease;
+    cursor: pointer;
+    backface-visibility: hidden;
+    opacity: 1;
+}
+
+/* Các thẻ được sắp xếp theo hình quạt */
+.card[data-index="0"] {
+    transform: rotate(-60deg) translateY(20px);
+    z-index: 1;
+}
+.card[data-index="1"] {
+    transform: rotate(-30deg) translateY(10px);
+    z-index: 2;
+}
+.card[data-index="2"] {
+    transform: rotate(0deg);
+    z-index: 3;
+}
+.card[data-index="3"] {
+    transform: rotate(30deg) translateY(10px);
+    z-index: 2;
+}
+.card[data-index="4"] {
+    transform: rotate(60deg) translateY(20px);
+    z-index: 1;
+}
+
+/* Các mặt của thẻ */
+.card-front,
+.card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.card-front {
+    background-size: cover;
+    background-position: center;
+}
+
+.card-back {
+    background-color: #ffeb3b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: black;
+    transform: rotateY(180deg);
+}
+
+/* Đảm bảo khi lật thẻ, thẻ sẽ nằm trên cùng */
+.card.flipped {
+    transform: rotateY(180deg);
+    z-index: 10;
+}
+
+.card.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Nút Messenger */
+#messengerBtn {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #0084ff;
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#messengerBtn:hover {
+    background-color: #005bb5;
+}
+
+
